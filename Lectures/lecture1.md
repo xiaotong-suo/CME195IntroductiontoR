@@ -93,7 +93,7 @@ u<-x+1
   ```
   * Load the data in x1.Rdata
   ```{r}
-  load(file = ’x1.RData’)
+  load(file = 'x1.RData')
   ```
 
 ## Working Directory
@@ -116,10 +116,7 @@ At the end of an R session, you can choose to save all the objects in memory. A 
 
 - Another important concept to know is the search directories. That is the sequence of Environments in which R searches for whatever variable or function you request.
 - You can see that hierarchy with `search()`. This hierarchy changes as you add or remove packages to your R session.
-
-- Another important concept to know is the search directories. That is the sequence of Environments in which R searches for whatever variable or function you request.
-You can see that hierarchy with ’search()’. This hierarchy changes as you add or remove packages to your R session.
-Type ?environment in R to find how to get, set and create environments.
+- Type ?environment in R to find how to get, set and create environments.
 
 
 ## Functions
@@ -164,16 +161,21 @@ R automatically fills a NA into the end of ‘v’ since no value is provided.
   -2^1024
   1/0
  ```
-- NaN: a computation will produce a result that makes little sense. In these cases, R often returns ‘NaN’, which stands for not a number.
+- `NaN`: a computation will produce a result that makes little sense. In these cases, R often returns ‘NaN’, which stands for not a number.
 ```
   Inf – Inf
   0/0
   ```
-- ‘NULL’:  A null object in R, represented by the symbol NULL. NULL is often used as an argument in functions to mean that no value was assigned to the argument.
+- `NULL`:  A null object in R, represented by the symbol NULL. NULL is often used as an argument in functions to mean that no value was assigned to the argument.
 ```
   f1 = function(arg1, arg2 = NULL)
  ```
-# Course Logistics 2
+## Exercise
+- Let `m1 =2` and `m2 = 3`, how to check whether m1 = m2?
+- Let `m1 = c(1,3,4,2)` and `m2 = c(3,4,1,2,1)` how to get a vector `mn` which is equal to (1,3,4,2,3,4,1,2,1)?
+- What is `m+n`?
+
+## Course Logistics 2
 In order to pass this course:
 
 - We have two long homework. You need to complete both homework and get more than 70% right.
