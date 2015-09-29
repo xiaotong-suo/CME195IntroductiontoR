@@ -10,23 +10,21 @@ output: html_document
   - Programming skills
   - Statistics background
 2. Course structures:
-  - 50 mins to 1 hour lecture
+  - Around 40 mins lecture
   - Exercises
 - What is this course about?
 
 ## What is R?
 - R is a software for statistical computing and data analysis. An implementation of the S language.
+
 - R is freely distributed software (www.r-project.org) with contributions from developers from around the world. It is one of the main software for statistical computing.
 
-## Getting Started
-There are two ways to work in R:
-
-- A conventional approach: you open a file and write program describing what you intend to do and run that program.
-- An interactive approach: you interact with R and do whatever you want to do, one step at a time.
-
-We type in expressions and R evaluate them and return a value if needed.
-We combine both approaches most of the times.
-
+## Why R?
+- R is free.
+- Companies use R. 
+- R is popular in academia.
+- R is one of the best tools for data science. 
+- 
 ## Install packages
 There are many nice packages in R and some of them are not in default. You may want to install them for your research.
 ```{r}
@@ -38,8 +36,18 @@ library(packagename)
 ```
 in order to use the package.
 
+## Getting Started
+There are two ways to work in R:
+
+- A conventional approach: you open a file and write program describing what you intend to do and run that program.
+- An interactive approach: you interact with R and do whatever you want to do, one step at a time.
+
+We type in expressions and R evaluate them and return a value if needed.
+We combine both approaches most of the times.
+
+
 ## Variables
-A variable in computer science is a name given to some storage location. In more practical terms, it is a binding between a symbol and a value. 
+A variable in computer science is a name given to some storage location. In more practical terms, it is a binding between a symbol and a value.
 
 ```{r}
 x = 20
