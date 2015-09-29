@@ -53,7 +53,7 @@ A variable in computer science is a name given to some storage location. In more
 x = 20
 y = x + 1
 x + 2 = z
-assign(‘u’, x+2)
+assign('u', x+2)
 ```
 1.  Both <- and = assign values to a variable, there are some differences between two assignment.
 For example, if we type:
@@ -85,7 +85,7 @@ u<-x+1
   ```
   * Delete x and u
   ```{r}
-  rm(list=c('x',’u’))
+  rm(list=c('x','u'))
   ```
   * Delete all variables
   ```{r}
@@ -124,7 +124,7 @@ At the end of an R session, you can choose to save all the objects in memory. A 
 - Beside variables, functions are the other most important concept in computer programming. A function is a piece of code that takes some input called arguments, performs a specific task and possibly returns a value. In order to properly use a function we must properly set up its arguments.
 
 - In R we specify arguments either by name or by position.
-- The function rnorm we used earlier:
+- The function `rnorm` we used earlier:
   ```{r}
   u <- rnorm(100,0,2) # by position
   x <- rnorm(n = 100, mean = 0, sd = 2) # by name
