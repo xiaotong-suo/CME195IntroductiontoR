@@ -24,7 +24,7 @@ output: html_document
 - Companies use R. 
 - R is popular in academia.
 - R is one of the best tools for data science. 
-- 
+
 ## Install packages
 There are many nice packages in R and some of them are not in default. You may want to install them for your research.
 ```{r}
