@@ -62,7 +62,7 @@ median(x = 1:10)
 ```
 v.s.
 ```{r}
-  median(x <- 1:10)
+median(x <- 1:10)
 ```
 In general, you might run into problems using `=` for assignment operator and `<-` is preferred!
 
@@ -170,6 +170,7 @@ R automatically fills a NA into the end of ‘v’ since no value is provided.
 ```
   f1 = function(arg1, arg2 = NULL)
  ```
+
 ## Exercise
 - Let `m1 =2` and `m2 = 3`, how to check whether m1 = m2?
 - Let `m1 = c(1,3,4,2)` and `m2 = c(3,4,1,2,1)` how to get a vector `mn` which is equal to (1,3,4,2,3,4,1,2,1)?
