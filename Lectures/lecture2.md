@@ -172,6 +172,5 @@ A/B
 A*B
 log(exp(A))
 ```
--􏰁 No
-te that `A% ∗ %B` is the usual matrix multiplication. The inverse is obtained with the function ’solve’.
+- Note that `A% ∗ %B` is the usual matrix multiplication. The inverse is obtained with the function ’solve’.
 􏰁Other useful function: ’eigen’, ’det’. The transpose is ’t’.
