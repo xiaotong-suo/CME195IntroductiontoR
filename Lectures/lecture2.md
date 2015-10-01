@@ -4,7 +4,8 @@ output: html_document
 # Lecture 2
 Today's Agenda
 - Functions
-- Data structures: vectors, matrices, factors, dataframes, and lists.
+- Data structures: vectors, matrices
+
 
 ## Data structures
 In order to work with a language we need to know the objects that language offers. R offers 5 basic objects: vectors, matrix, factor, dataframe and list.
@@ -123,6 +124,10 @@ A|B
 x=rnorm(100)
 mean(x>0)
 ```
+## A quick recap: 
+ - How to define a vector, name a vector
+ - Access elements in a vector
+ - Recycling rule
 
 ## Matrices
 

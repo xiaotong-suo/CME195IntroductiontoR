@@ -69,7 +69,7 @@ img {
 
 <div id="lecture-2" class="section level1">
 <h1>Lecture 2</h1>
-<p>Today’s Agenda - Functions - Data structures: vectors, matrices, factors, dataframes, and lists.</p>
+<p>Today’s Agenda - Functions - Data structures: vectors, matrices</p>
 <div id="data-structures" class="section level2">
 <h2>Data structures</h2>
 <p>In order to work with a language we need to know the objects that language offers. R offers 5 basic objects: vectors, matrix, factor, dataframe and list.</p>
@@ -81,7 +81,9 @@ img {
 <li><p>To create a vector use the function ‘vector’:</p>
 <pre class="{r}"><code>x1 &lt;- vector(’double’,2);
 x2 &lt;- 1 #The variable x is a vector of size 1</code></pre></li>
-<li>Another common way of creating a vector is using the concatenation function ‘c’ or ‘:’. <code>{r}   x3 &lt;-  c(1,2,10)   x4 &lt;- 1:10</code></li>
+<li><p>Another common way of creating a vector is using the concatenation function ‘c’ or ‘:’.</p>
+<pre class="{r}"><code>x3 &lt;-  c(1,2,10)
+x4 &lt;- 1:10</code></pre></li>
 <li><p>There are also many other common ways to create a vector:</p>
 <pre class="{r}"><code>x5 = rep(1, 10)
 x6 = seq(from = -2.5, to = 2.5, by = 0.1)</code></pre></li>
@@ -150,7 +152,11 @@ A&amp;B
 A|B</code></pre></li>
 <li><p>R allows to do usual calculations on logical vectors. In this case, the value TRUE is taken as 1 and FALSE as 0. This can be very useful in practice. Consider the following:</p>
 <pre class="{r}"><code>x=rnorm(100)
-mean(x&gt;0)</code></pre></li>
+mean(x&gt;0)</code></pre>
+<h2 id="a-quick-recap">A quick recap:</h2></li>
+<li>How to define a vector, name a vector</li>
+<li>Access elements in a vector</li>
+<li><p>Recycling rule</p></li>
 </ul>
 </div>
 </div>
@@ -158,7 +164,7 @@ mean(x&gt;0)</code></pre></li>
 <h2>Matrices</h2>
 <ul>
 <li>R supports matrices and has a good numerical linear algebra library. 􏰁- You can create matrix in R using the function ’matrix’.</li>
-<li><p>By default the matrix is filled by column. Use the argument ’byrow’ to fill the matrix by row.</p>
+<li><p>By default the matrix is filled by column. Use the argument ’byrow’ to fill the matrix by row</p>
 <pre class="{r}"><code>M1=matrix(data=1:8,ncol=4, nrow=2)
 M2=matrix(data=1:8,ncol=4,nrow=2,byrow=T)</code></pre></li>
 <li><p>You can name to rows and columns of a matrix:</p>
