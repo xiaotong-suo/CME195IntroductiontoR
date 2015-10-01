@@ -13,7 +13,6 @@ output: html_document
 
 3. The r script you turn in: it will not be graded, instead, will be checked. However, if you are enrolled in this class and would like me to give you some feedback, I would be happy to do so. 
 
-
 ## Data structures
 In order to work with a language we need to know the objects that language offers. R offers 5 basic objects: vectors, matrix, factor, dataframe and list.
 
