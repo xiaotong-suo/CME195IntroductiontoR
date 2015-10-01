@@ -16,16 +16,19 @@ In order to work with a language we need to know the objects that language offer
 x1 <- vector(’double’,2);
 x2 <- 1 #The variable x is a vector of size 1
 ```
+
 - Another common way of creating a vector is using the concatenation function 'c' or ':'.
-  ```{r}
-  x3 <-  c(1,2,10)
-  x4 <- 1:10
-  ```
+```{r}
+x3 <-  c(1,2,10)
+x4 <- 1:10
+```
+
 - There are also many other common ways to create a vector:
 ```{r}
 x5 = rep(1, 10)
 x6 = seq(from = -2.5, to = 2.5, by = 0.1)
 ```
+
 - We use `[]` to access the elements of a vector. Thus x[1] is the first element of x, etc...
 ```{r}
 x3[1]+2
@@ -125,7 +128,7 @@ mean(x>0)
 
 - R supports matrices and has a good numerical linear algebra library.
 􏰁- You can create matrix in R using the function ’matrix’.
-- By default the matrix is filled by column. Use the argument  ’byrow’ to fill the matrix by row.
+- By default the matrix is filled by column. Use the argument  ’byrow’ to fill the matrix by row
 ```{r}
 M1=matrix(data=1:8,ncol=4, nrow=2)
 M2=matrix(data=1:8,ncol=4,nrow=2,byrow=T)
