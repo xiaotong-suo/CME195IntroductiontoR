@@ -2,9 +2,16 @@
 output: html_document
 ---
 # Lecture 2
-Today's Agenda
+1. Today's Agenda
 - Functions
 - Data structures: vectors, matrices
+
+2. The feedback from you:
+- Pace: most of you followed the first lecture well and I will increase the speed of the lectures in the future. However, if you have trouble following me, feel free to ask questions in class or make an appointment with me. 
+
+- Lecture materials: Maybe a little less organized! 
+
+3. The r script you turn in: it will not be graded, instead, will be checked. However, if you are enrolled in this class and would like me to give you some feedback, I would be happy to do so. 
 
 
 ## Data structures
