@@ -2,22 +2,30 @@
 output: pdf_document
 ---
 # Lecture 2
+Today's Agenda
+- Functions
+- Data structures: vectors, matrices, factors, dataframes, and lists.
 
 ## Data structures
 In order to work with a language we need to know the objects that language offers. R offers 5 basic objects: vectors, matrix, factor, dataframe and list.
 
 ## Vectors
 - A vector is a collection of objects which all have the same data type (also called mode). R supports many different mode: integer, double, logical, character and complex.
-- To create a vector use the function ”vector”, or simply create a new variable.
+- To create a vector use the function ”vector”:
 ```{r}
 x1 <- vector(’double’,2);
 x2 <- 1 #The variable x is a vector of size 1
 ```
-- Another common way of creating a vector is using the concatenation function ’c’ or ’:’.
+- Another common way of creating a vector is using the concatenation function 'c' or ':'.
   ```
-  X3 <-  c(1,2,10)
-  X4 <- 1:10
+  x3 <-  c(1,2,10)
+  x4 <- 1:10
   ```
+- There are also many other common ways to create a vector:
+```
+  x5 = rep(1, 10)
+  x6 = seq(from = -2.5, to = 2.5, by = 0.1)
+```
 - We use `[]` to access the elements of a vector. Thus x[1] is the first element of x, etc...
 ```x3[1]+2
 x3[3:10]
@@ -36,20 +44,25 @@ typeof(x5)
 ```
 - Again: in a vector all elements are of the same data type.
 If need be R will coerce your input in order to enforce that rule
-```x1 <- c(1.2,’a’)
-x2 <- c(5,-3,FALSE)```
+```
+x1 <- c(1.2, `a`)
+x2 <- c(5,-3,FALSE)
+```
 
 - You can name the elements of a vector.
-```x=1:5
+```
+x=1:5
 names(x)=c(‘a’,’b’,’c’,’d’,’e’)
 #we can do it more quickly:
 names(x)=letters[1:5]
-
 ```
+
 - Calculus is vectorized in R.
-``` x=c(1,3)
+```
+x=c(1,3)
 exp(x)
-x/2```
+x/2
+```
 
 - The recycling rule: consider the following example.
   ```
@@ -64,23 +77,27 @@ x/2```
 In formal calculus, the last two expressions are not valid because the vectors are not of the same size. That is where the recycling rule kicks in: R repeats the shortest vector until the two vector have the same length.
 
 - Accessing elements of collections of objects is an important operation(subletting). R provides a very powerful and flexible facility for this. We can select subsets of a vector by inclusion, exclusion, by name and by logical indexing. The result is another vector.
+```
+x=rbinom(10,21,0.5)
+#by inclusion
+x[1]
+#by exclusion
+x[-c(1,2,9,10)]
+#by logical indexing  
+x[x>5]
+```
 
 - Can you guess what is going on?
-```x=rbinom(10,21,0.5)
-by inclusion
-x[1]
-by exclusion
-x[-c(1,2,9,10)]
-by logical indexing  
-x[x>5]```
-```x=1:10;
+```
+x=1:10;
 names(x)=letters[1:10]
-x[’b’]
+x['b']
 x[-(1:2)]=10:3
 x[x==100]=NA
 x[c(TRUE,FALSE)]
 x[]=10
-x=10```
+x=10
+```
 
 ### Logical vectors
 - Most of you are familiar with vectors of numerics. It is important to understand vectors of logical.
@@ -94,51 +111,65 @@ B=c(TRUE,FALSE)
 A&B
 A|B
 ```
+
 - R allows to do usual calculations on logical vectors. In this case, the value TRUE is taken as 1 and FALSE as 0. This can be very useful in practice. Consider the following:
-```x=rnorm(100)
-mean(x>0)```
+```
+x=rnorm(100)
+mean(x>0)
+```
 
 ## Matrices
 
 - R supports matrices and has a good numerical linear algebra library.
 􏰁- You can create matrix in R using the function ’matrix’.
 - By default the matrix is filled by column. Use the argument  ’byrow’ to fill the matrix by row.
-```M1=matrix(data=1:8,ncol=4, nrow=2)
-M2=matrix(data=1:8,ncol=4,nrow=2,byrow=T)```
+
+```
+M1=matrix(data=1:8,ncol=4, nrow=2)
+M2=matrix(data=1:8,ncol=4,nrow=2,byrow=T)
+```
+
 - You can name to rows and columns of a matrix:
-```rownames(M1)=letters[1:2]
-colnames(M1)=letters[1:4] 􏰁```
-We can find out the size of a matrix:
-```dim(M1)
+```
+rownames(M1)=letters[1:2]
+colnames(M1)=letters[1:4] 􏰁
+```
+
+- We can find out the size of a matrix:
+```
+dim(M1)
 ncol(M1)
 nrow(M1)
 ```
--To index a matrix, use the same techniques as for vectors but with the first index for rows and the second index for column. Can you guess what is is going on?
+
+- To index a matrix, use the same techniques as for vectors but with the first index for rows and the second index for column.
+
+- Can you guess what is is going on?
 ```{r}
 M1= matrix(data=1:8,ncol=4, nrow=2)
 rownames(M1)=letters[1:2]
 colnames(M1)=letters[1:4]
 M1[-1,2]
 M1[’a’,]
-M1[,c(TRUE,TRUE,FALSE)]```
+M1[,c(TRUE,TRUE,FALSE)]
+```
 
 - When we take a one-dimensional subset of a matrix, the result by default is coerced into a vector, unless we use the argument drop.
 ```{r}
 M1[,1]
-
 # compare with
 M1[,1,drop=F]
 ```
 
 - R supports matrix calculus, but beware: A+B, A-B, A/B, A*B are all element by element operations. As with vectors, any operation on numerics will also work on matrix of numerics.
 ```
-A=matrix(1:4,2,2)
+  A=matrix(1:4,2,2)
   B=matrix(5:8,2,2)
   A+B
   A/B
   A*B
-  log(exp(A))```
+  log(exp(A))
+```
 
--􏰁 `A% ∗ %B` is the usual matrix multiplication. The inverse is obtained with the function ’solve’.
+-􏰁 Note that `A% ∗ %B` is the usual matrix multiplication. The inverse is obtained with the function ’solve’.
 􏰁Other useful function: ’eigen’, ’det’. The transpose is ’t’.
-
