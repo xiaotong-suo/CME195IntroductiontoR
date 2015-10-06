@@ -61,7 +61,7 @@ L$V1 L[[3]]
 
 2. Typically we create data frames by reading data from files. We can also create data frames from vectors with the function data.frame.
 
-3. You can convert a data frame to a matrix with ’data.matrix’.
+3. You can convert a data frame to a matrix with 'data.matrix'.
 ```{r}
 V=factor(c('A','A','C','B','B'));
 X=1:5;
