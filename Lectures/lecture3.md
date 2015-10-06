@@ -71,7 +71,7 @@ names(dt1)=c('meas1','meas2','meas3')
 ```
 
 4. We think of data frames both as a matrix (a rectangular table with rows and columns) and as a list (a list of statistical variables on which we have observations).
-```
+```{r}
 #Continuing with the previous example:
 dt1[1,1]
 dt1$meas1
