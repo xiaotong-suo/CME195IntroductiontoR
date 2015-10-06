@@ -7,11 +7,10 @@ output: html_document
 - Data structures: vectors, matrices
 
 2. The feedback from you:
-- Pace: most of you followed the first lecture well and I will increase the speed of the lectures in the future. However, if you have trouble following me, feel free to ask questions in class or make an appointment with me. 
+  - Pace: most of you followed the first lecture well and I will increase the speed of the lectures in the future. However, if you have trouble following me, feel free to ask questions in class or make an appointment with me.
+  - Lecture materials: Maybe a little less organized!
 
-- Lecture materials: Maybe a little less organized! 
-
-3. The r script you turn in: it will not be graded, instead, will be checked. However, if you are enrolled in this class and would like me to give you some feedback, I would be happy to do so. 
+3. The r script you turn in: it will not be graded, instead, will be checked. However, if you are enrolled in this class and would like me to give you some feedback, I would be happy to do so.
 
 ## Data structures
 In order to work with a language we need to know the objects that language offers. R offers 5 basic objects: vectors, matrix, factor, dataframe and list.
@@ -86,7 +85,7 @@ v=c(x,y,z) # 'c' is the concatenation function
 v+1
 x+1
 ```
-  
+
 In formal calculus, the last two expressions are not valid because the vectors are not of the same size. That is where the recycling rule kicks in: R repeats the shortest vector until the two vector have the same length.
 
 - Accessing elements of collections of objects is an important operation(subletting). R provides a very powerful and flexible facility for this. We can select subsets of a vector by inclusion, exclusion, by name and by logical indexing. The result is another vector.
@@ -130,7 +129,7 @@ A|B
 x=rnorm(100)
 mean(x>0)
 ```
-## A quick recap: 
+## A quick recap:
  - How to define a vector, name a vector
  - Access elements in a vector
  - Recycling rule
