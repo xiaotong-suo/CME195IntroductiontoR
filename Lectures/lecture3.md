@@ -29,11 +29,11 @@ f2=factor(data,levels=letters[1:10],ordered=T)
 4. The function 'cut' can be useful in doing so.
 ```{r}
 data=stack.x[,'Water.Temp']
-f3=cut(data,breaks=3,labels=c(‘Low’,’Medium’,’High’))
+f3=cut(data,breaks=3,labels=c('Low','Medium','High'))
 ```
 We can add the ordering
 ```
-f3=cut(data,breaks=3, labels=c(’Low’,’Medium’,’High’),ordered=T)
+f3=cut(data,breaks=3, labels=c('Low','Medium','High'),ordered=T)
 ```
 
 ## Lists
