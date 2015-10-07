@@ -1,3 +1,6 @@
+---
+output: pdf_document
+---
 # Homework 1
 Due date: Oct 14th, 2015
 
