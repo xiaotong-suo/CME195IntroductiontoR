@@ -54,7 +54,7 @@ spliteddiamonds = split(diamonds, color)
 
 4. str function: A alternative function to ‘summary’
 You can apply str to any objects in R: fpre example, a dataframe
-```
+```{r}
 str(diamonds)
 x <- rnorm(100,2,4)
 str(x) #compared to summary(x)
@@ -89,7 +89,6 @@ for( i in 1:2) print(mean(X[,i]))
 ```
 
 6. rowSums, rowMeans,colSums, colMeans
-
 
 7. Performance comparisonsß
 ```{r}
