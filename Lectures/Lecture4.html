@@ -90,8 +90,8 @@ img {
 <pre><code>Year,Student,Major
 2009, John Doe,Statistics
 2009, Bart Simpson, Mathematics I</code></pre>
-The above is an example of a comma-separated file. Tab.delimited is the same except that we have tabs as a separator.</li>
-<li>The data set ’airquality’ is available is R and gives weather measurement in New York city over some period of time. Load that data set in a data frame and save it to a file.</li>
+<p>The above is an example of a comma-separated file. Tab.delimited is the same except that we have tabs as a separator.</p></li>
+<li><p>The data set ’airquality’ is available is R and gives weather measurement in New York city over some period of time. Load that data set in a data frame and save it to a file.</p></li>
 <li>Things to keep in mind when reading or writing to file:</li>
 </ol>
 <ul>
@@ -102,47 +102,40 @@ The above is an example of a comma-separated file. Tab.delimited is the same exc
 </ul>
 <ol start="5" style="list-style-type: decimal">
 <li><p>The general syntax of read.table:</p>
-<pre class="{r}"><code>mydata=read.table('filename.dat',header=F, sep=' ', dec='.', col.names=c('V1', 'V2'),na.strings='NA')</code></pre></li>
+<pre><code>mydata=read.table('filename.dat',header=F, sep=' ', dec='.', col.names=c('V1','V2'),
+na.strings='NA')</code></pre></li>
 </ol>
 </div>
 <div id="some-useful-functions" class="section level2">
 <h2>Some useful functions</h2>
 <ol style="list-style-type: decimal">
 <li><p>as. functions</p>
-<pre class="{r}"><code>as.numeric
+<pre><code>as.numeric
 as.character
 as.matrix(data.matrix())
 as.data.frame</code></pre>
 <p>Character &gt; numeric &gt; integer &gt; logical</p></li>
 <li><p>which functions</p>
-<pre class="{r}"><code>which()
+<pre><code>which()
 which.min()
 which.max()</code></pre></li>
 <li><p>Split() function split(x,f) divides the data in the vector x into the groups defined by f.</p>
 <pre><code>spliteddiamonds = split(diamonds, color)</code></pre></li>
 <li><p>str function: A alternative function to ‘summary’ You can apply str to any objects in R: fpre example, a dataframe</p>
-<pre class="{r}"><code>str(diamonds)
+<pre><code>str(diamonds)
 x &lt;- rnorm(100,2,4)
 str(x) #compared to summary(x)
 str(spliteddiamonds)</code></pre></li>
-<li><p>apply function ```{r} args(apply) function (X, MARGIN, FUN, …) X: the object; ’MARGIN’: a vector giving the subscripts which the function will be applied over. 1 indicates rows, 2 indicates columns.</p></li>
+<li><p>apply function: ``` args(apply) function (X, MARGIN, FUN, …) X: the object; ’MARGIN’: a vector giving the subscripts which the function will be applied over. 1 indicates rows, 2 indicates columns.</p></li>
 </ol>
-<p>’FUN’: the function to be applied. In the case of functions like +, %*%, etc., the function namemust be backquoted or quoted.</p>
-<p>’…’: additional optional arguments to FUN. <code></code>{r} x &lt;- rnorm(100, -5, 1) x &lt;- c(NA,rnorm(100, -5, 1)) y &lt;- rnorm(100, 5, 1) X &lt;- cbind(x, y) apply(X, MARGIN=2, FUN=mean) apply(X, 2,mean,na.rm=T) apply(X, MARGIN=2, FUN=var) apply(X,2,var,na.rm=T) for( i in 1:2) print(mean(X[,i])) ```</p>
-<ol start="6" style="list-style-type: decimal">
-<li><p>rowSums, rowMeans,colSums, colMeans</p></li>
-<li><p>Performance comparisonsß</p>
-<pre class="{r}"><code>N=10
-P=5
-A=matrix(rnorm(N*P),ncol=P) 
-sumrow=apply(A,MARGIN=1,FUN=sum)
-N=1000
-A=matrix(rnorm(N*P),ncol=P) 
-sumrow=numeric(N), 
-system.time(for (i in 1:N) sumrow[i]=sum(A[i,])) 
-system.time(apply(A,MARGIN=1,FUN=sum))
-system.time(rowSums(A))</code></pre></li>
-</ol>
+<p>’FUN’: the function to be applied. In the case of functions like +, %*%, etc., the function namemust be backquoted or quoted. ’…’: additional optional arguments to FUN.</p>
+<pre><code>Some Exercises</code></pre>
+<p>x &lt;- rnorm(100, -5, 1) x &lt;- c(NA,rnorm(100, -5, 1)) y &lt;- rnorm(100, 5, 1) X &lt;- cbind(x, y) apply(X, MARGIN=2, FUN=mean) apply(X, 2,mean,na.rm=T) apply(X, MARGIN=2, FUN=var) apply(X,2,var,na.rm=T) for( i in 1:2) print(mean(X[,i]))</p>
+<pre><code>
+6. rowSums, rowMeans,colSums, colMeans
+
+7. Performance comparisons</code></pre>
+<p>N=10 P=5 A=matrix(rnorm(N<em>P),ncol=P) sumrow=apply(A,MARGIN=1,FUN=sum) N=1000 A=matrix(rnorm(N</em>P),ncol=P) sumrow=numeric(N), system.time(for (i in 1:N) sumrow[i]=sum(A[i,])) system.time(apply(A,MARGIN=1,FUN=sum)) system.time(rowSums(A)) ```</p>
 </div>
 </div>
 

@@ -11,7 +11,7 @@
 And read data from file using ’read.table’.
 2. If you have a tab-delimited file, use the function ’read.delim’ instead.
 If the file is comma-separated file, then use ’read.csv’.
-```
+```{r}
 Year,Student,Major
 2009, John Doe,Statistics
 2009, Bart Simpson, Mathematics I
@@ -30,14 +30,14 @@ save it to a file.
   -  Do you want to allow R to convert characters variables to factors? use options stringsAsFactors and as.is.
 
 5. The general syntax of read.table:
-```
+```{r}
 mydata=read.table('filename.dat',header=F, sep=' ', dec='.', col.names=c('V1','V2'),
 na.strings='NA')
 ```
 
 ## Some useful functions
 1. as. functions
-```
+```{r}
 as.numeric
 as.character
 as.matrix(data.matrix())
@@ -46,7 +46,7 @@ as.data.frame
 Character > numeric > integer > logical
 
 2. which functions
-```
+```{r}
 which()
 which.min()
 which.max()
@@ -54,13 +54,13 @@ which.max()
 
 3. Split() function
 split(x,f) divides the data in the vector x into the groups defined by f.
-```
+```{r}
 spliteddiamonds = split(diamonds, color)
 ```
 
 4. str function: A alternative function to ‘summary’
 You can apply str to any objects in R: fpre example, a dataframe
-```
+```{r}
 str(diamonds)
 x <- rnorm(100,2,4)
 str(x) #compared to summary(x)
@@ -68,7 +68,7 @@ str(spliteddiamonds)
 ```
 
 5. apply function:
-```
+```{r}
 args(apply)
 function (X, MARGIN, FUN, ...)
 X: the object;
@@ -82,7 +82,7 @@ the function namemust be	backquoted or quoted.
 ’...’: additional optional arguments to FUN.
 ```
 Some Exercises
-```
+```{r}
 x <- rnorm(100, -5, 1)
 x <- c(NA,rnorm(100, -5, 1))
 y <- rnorm(100, 5, 1)
@@ -97,7 +97,7 @@ for( i in 1:2) print(mean(X[,i]))
 6. rowSums, rowMeans,colSums, colMeans
 
 7. Performance comparisons
-```
+```{r}
 N=10
 P=5
 A=matrix(rnorm(N*P),ncol=P)
