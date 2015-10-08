@@ -8,7 +8,6 @@
 
 ## Data input/output
 1. R can write matrix and data frames to file using the function ’write.table’. And read data from file using ’read.table’.
-
 2. If you have a tab-delimited file, use the function ’read.delim’ instead. If the file is comma-separated file, then use ’read.csv’.
 ```
 Year,Student,Major
@@ -16,9 +15,7 @@ Year,Student,Major
 2009, Bart Simpson, Mathematics I
 ```
 The above is an example of a comma-separated file. Tab.delimited is the same except that we have tabs as a separator.
-
 3. The data set ’airquality’ is available is R and gives weather measurement in New York city over some period of time. Load that data set in a data frame and save it to a file.
-
 4. Things to keep in mind when reading or writing to file:
   - Header: whether the file has a first row giving the names of the variables.
   - Separator: What separator of fields is used: space, comma, tabular.
