@@ -66,9 +66,13 @@ str(spliteddiamonds)
 args(apply)
 function (X, MARGIN, FUN, ...)
 X: the object;
-’MARGIN’: a vector giving the subscripts which the function will be applied over. 1 indicates rows, 2 indicates columns.
+’MARGIN’: a vector giving the subscripts 
+which the function will be applied over. 
+1 indicates rows, 2 indicates columns.
 
-’FUN’: the function to be applied. In the case of functions like +, %*%, etc., the function namemust be	backquoted or quoted.
+’FUN’: the function to be applied. 
+In the case of functions like +, %*%, etc., 
+the function namemust be	backquoted or quoted.
 
 ’...’: additional optional arguments to FUN.
 ```
