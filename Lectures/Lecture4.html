@@ -84,58 +84,61 @@ img {
 </ul>
 <div id="data-inputoutput" class="section level2">
 <h2>Data input/output</h2>
-<ol style="list-style-type: decimal">
+<ul>
 <li>R can write matrix and data frames to file using the function ’write.table’. And read data from file using ’read.table’.</li>
 <li><p>If you have a tab-delimited file, use the function ’read.delim’ instead. If the file is comma-separated file, then use ’read.csv’.</p>
-<pre><code>Year,Student,Major
+<pre class="{r}"><code>Year,Student,Major
 2009, John Doe,Statistics
 2009, Bart Simpson, Mathematics I</code></pre>
 <p>The above is an example of a comma-separated file. Tab.delimited is the same except that we have tabs as a separator.</p></li>
 <li><p>The data set ’airquality’ is available is R and gives weather measurement in New York city over some period of time. Load that data set in a data frame and save it to a file.</p></li>
 <li>Things to keep in mind when reading or writing to file:</li>
-</ol>
-<ul>
 <li>Header: whether the file has a first row giving the names of the variables.</li>
 <li>Separator: What separator of fields is used: space, comma, tabular.</li>
 <li>Data character string: What character strings serve as missing data.</li>
-<li>Do you want to allow R to convert characters variables to factors? use options stringsAsFactors and as.is.</li>
-</ul>
-<ol start="5" style="list-style-type: decimal">
+<li><p>Do you want to allow R to convert characters variables to factors? use options stringsAsFactors and as.is.</p></li>
 <li><p>The general syntax of read.table:</p>
-<pre><code>mydata=read.table('filename.dat',header=F, sep=' ', dec='.', col.names=c('V1','V2'),
+<pre class="{r}"><code>mydata=read.table('filename.dat',header=F, sep=' ', dec='.', col.names=c('V1','V2'),
 na.strings='NA')</code></pre></li>
-</ol>
+</ul>
 </div>
 <div id="some-useful-functions" class="section level2">
 <h2>Some useful functions</h2>
-<ol style="list-style-type: decimal">
+<ul>
 <li><p>as. functions</p>
-<pre><code>as.numeric
+<pre class="{r}"><code>as.numeric
 as.character
 as.matrix(data.matrix())
 as.data.frame</code></pre>
 <p>Character &gt; numeric &gt; integer &gt; logical</p></li>
 <li><p>which functions</p>
-<pre><code>which()
+<pre class="{r}"><code>which()
 which.min()
 which.max()</code></pre></li>
 <li><p>Split() function split(x,f) divides the data in the vector x into the groups defined by f.</p>
-<pre><code>spliteddiamonds = split(diamonds, color)</code></pre></li>
+<pre class="{r}"><code>spliteddiamonds = split(diamonds, color)</code></pre></li>
 <li><p>str function: A alternative function to ‘summary’ You can apply str to any objects in R: fpre example, a dataframe</p>
-<pre><code>str(diamonds)
+<pre class="{r}"><code>str(diamonds)
 x &lt;- rnorm(100,2,4)
 str(x) #compared to summary(x)
 str(spliteddiamonds)</code></pre></li>
-<li><p>apply function: ``` args(apply) function (X, MARGIN, FUN, …) X: the object; ’MARGIN’: a vector giving the subscripts which the function will be applied over. 1 indicates rows, 2 indicates columns.</p></li>
-</ol>
-<p>’FUN’: the function to be applied. In the case of functions like +, %*%, etc., the function namemust be backquoted or quoted. ’…’: additional optional arguments to FUN.</p>
-<pre><code>Some Exercises</code></pre>
-<p>x &lt;- rnorm(100, -5, 1) x &lt;- c(NA,rnorm(100, -5, 1)) y &lt;- rnorm(100, 5, 1) X &lt;- cbind(x, y) apply(X, MARGIN=2, FUN=mean) apply(X, 2,mean,na.rm=T) apply(X, MARGIN=2, FUN=var) apply(X,2,var,na.rm=T) for( i in 1:2) print(mean(X[,i]))</p>
-<pre><code>
-6. rowSums, rowMeans,colSums, colMeans
-
-7. Performance comparisons</code></pre>
-<p>N=10 P=5 A=matrix(rnorm(N<em>P),ncol=P) sumrow=apply(A,MARGIN=1,FUN=sum) N=1000 A=matrix(rnorm(N</em>P),ncol=P) sumrow=numeric(N), system.time(for (i in 1:N) sumrow[i]=sum(A[i,])) system.time(apply(A,MARGIN=1,FUN=sum)) system.time(rowSums(A)) ```</p>
+<li><p>apply function: ```{r} args(apply) function (X, MARGIN, FUN, …) X: the object; ’MARGIN’: a vector giving the subscripts which the function will be applied over. 1 indicates rows, 2 indicates columns.</p></li>
+</ul>
+<p>’FUN’: the function to be applied. In the case of functions like +, %*%, etc., the function namemust be backquoted or quoted. ’…’: additional optional arguments to FUN. <code>Some Exercises</code>{r} x &lt;- rnorm(100, -5, 1) x &lt;- c(NA,rnorm(100, -5, 1)) y &lt;- rnorm(100, 5, 1) X &lt;- cbind(x, y) apply(X, MARGIN=2, FUN=mean) apply(X, 2,mean,na.rm=T) apply(X, MARGIN=2, FUN=var) apply(X,2,var,na.rm=T) for( i in 1:2) print(mean(X[,i])) ```</p>
+<ul>
+<li><p>rowSums, rowMeans,colSums, colMeans</p></li>
+<li><p>Performance comparisons</p>
+<pre class="{r}"><code>N=10
+P=5
+A=matrix(rnorm(N*P),ncol=P)
+sumrow=apply(A,MARGIN=1,FUN=sum)
+N=1000
+A=matrix(rnorm(N*P),ncol=P)
+sumrow=numeric(N),
+system.time(for (i in 1:N) sumrow[i]=sum(A[i,]))
+system.time(apply(A,MARGIN=1,FUN=sum))
+system.time(rowSums(A))</code></pre></li>
+</ul>
 </div>
 </div>
 

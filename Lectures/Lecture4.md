@@ -7,9 +7,9 @@
   - Data input/output
 
 ## Data input/output
-1. R can write matrix and data frames to file using the function ’write.table’.
+*  R can write matrix and data frames to file using the function ’write.table’.
 And read data from file using ’read.table’.
-2. If you have a tab-delimited file, use the function ’read.delim’ instead.
+*  If you have a tab-delimited file, use the function ’read.delim’ instead.
 If the file is comma-separated file, then use ’read.csv’.
 ```{r}
 Year,Student,Major
@@ -19,24 +19,24 @@ Year,Student,Major
 The above is an example of a comma-separated file. Tab.delimited is the same
 except that we have tabs as a separator.
 
-3. The data set ’airquality’ is available is R and gives weather measurement in
+* The data set ’airquality’ is available is R and gives weather measurement in
 New York city over some period of time. Load that data set in a data frame and
 save it to a file.
 
-4. Things to keep in mind when reading or writing to file:
+*  Things to keep in mind when reading or writing to file:
   - Header: whether the file has a first row giving the names of the variables.
   - Separator: What separator of fields is used: space, comma, tabular.
   - Data character string: What character strings serve as missing data.
   -  Do you want to allow R to convert characters variables to factors? use options stringsAsFactors and as.is.
 
-5. The general syntax of read.table:
+*  The general syntax of read.table:
 ```{r}
 mydata=read.table('filename.dat',header=F, sep=' ', dec='.', col.names=c('V1','V2'),
 na.strings='NA')
 ```
 
 ## Some useful functions
-1. as. functions
+*  as. functions
 ```{r}
 as.numeric
 as.character
@@ -45,20 +45,20 @@ as.data.frame
 ```
 Character > numeric > integer > logical
 
-2. which functions
+*  which functions
 ```{r}
 which()
 which.min()
 which.max()
 ```
 
-3. Split() function
+*  Split() function
 split(x,f) divides the data in the vector x into the groups defined by f.
 ```{r}
 spliteddiamonds = split(diamonds, color)
 ```
 
-4. str function: A alternative function to ‘summary’
+*  str function: A alternative function to ‘summary’
 You can apply str to any objects in R: fpre example, a dataframe
 ```{r}
 str(diamonds)
@@ -67,7 +67,7 @@ str(x) #compared to summary(x)
 str(spliteddiamonds)
 ```
 
-5. apply function:
+*  apply function:
 ```{r}
 args(apply)
 function (X, MARGIN, FUN, ...)
@@ -94,9 +94,9 @@ apply(X,2,var,na.rm=T)
 for( i in 1:2) print(mean(X[,i]))
 ```
 
-6. rowSums, rowMeans,colSums, colMeans
+*  rowSums, rowMeans,colSums, colMeans
 
-7. Performance comparisons
+* Performance comparisons
 ```{r}
 N=10
 P=5
