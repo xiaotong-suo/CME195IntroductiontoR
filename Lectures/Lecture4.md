@@ -9,18 +9,21 @@
 ## Data input/output
 1. R can write matrix and data frames to file using the function ’write.table’. And read data from file using ’read.table’.
 2. If you have a tab-delimited file, use the function ’read.delim’ instead. If the file is comma-separated file, then use ’read.csv’.
-```
+```{r}
 Year,Student,Major
 2009, John Doe,Statistics
 2009, Bart Simpson, Mathematics I
 ```
 The above is an example of a comma-separated file. Tab.delimited is the same except that we have tabs as a separator.
+
 3. The data set ’airquality’ is available is R and gives weather measurement in New York city over some period of time. Load that data set in a data frame and save it to a file.
+
 4. Things to keep in mind when reading or writing to file:
   - Header: whether the file has a first row giving the names of the variables.
   - Separator: What separator of fields is used: space, comma, tabular.
   - Data character string: What character strings serve as missing data.
   -  Do you want to allow R to convert characters variables to factors? use options stringsAsFactors and as.is.
+
 5. The general syntax of read.table:
 ```{r}
 mydata=read.table('filename.dat',header=F, sep=' ', dec='.', col.names=c('V1', 'V2'),na.strings='NA')
@@ -63,12 +66,12 @@ str(spliteddiamonds)
 args(apply)
 function (X, MARGIN, FUN, ...)
 X: the object;
-’MARGIN’: a vector giving the subscripts 
-which the function will be applied over. 
+’MARGIN’: a vector giving the subscripts
+which the function will be applied over.
 1 indicates rows, 2 indicates columns.
 
-’FUN’: the function to be applied. 
-In the case of functions like +, %*%, etc., 
+’FUN’: the function to be applied.
+In the case of functions like +, %*%, etc.,
 the function namemust be	backquoted or quoted.
 
 ’...’: additional optional arguments to FUN.
@@ -91,13 +94,12 @@ for( i in 1:2) print(mean(X[,i]))
 ```{r}
 N=10
 P=5
-A=matrix(rnorm(N*P),ncol=P) 
+A=matrix(rnorm(N*P),ncol=P)
 sumrow=apply(A,MARGIN=1,FUN=sum)
 N=1000
-A=matrix(rnorm(N*P),ncol=P) 
-sumrow=numeric(N), 
-system.time(for (i in 1:N) sumrow[i]=sum(A[i,])) 
+A=matrix(rnorm(N*P),ncol=P)
+sumrow=numeric(N),
+system.time(for (i in 1:N) sumrow[i]=sum(A[i,]))
 system.time(apply(A,MARGIN=1,FUN=sum))
 system.time(rowSums(A))
 ```
-
