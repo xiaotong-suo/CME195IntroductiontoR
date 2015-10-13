@@ -97,11 +97,11 @@ for( i in 1:2) print(mean(X[,i]))
 *  rowSums, rowMeans,colSums, colMeans
 
 *  order and sort
-- The  func1on	‘order’	returns	the	ascending	(default)	or	descending	order	of	elements	of	a	vector.	For	example,	order(0.5,5,-3.1)	will	return	3,	1,	2.	Its	sister	func1on	is	sort.	We	always	have	x[order(x)]=sort(x).		
-- The	matrix	stack.x is	a	readily	available	matrix	in	
+1. The  function	'order'	returns	the	ascending	(default)	or	descending	order	of	elements	of	a	vector.	For	example,	order(0.5,5,-3.1)	will	return	3,	1,	2.	Its	sister	func1on	is	sort.	We	always	have	x[order(x)]=sort(x).		
+2. The	matrix	stack.x is	a	readily	available	matrix	in	
 R.	It	has	three	names	columns:	Air.Flow,	 Water.Temp,	Acid.Conc..	
 The	meaning	of	these	numbers	are	not	very	important	here.		
-- Order	the	rows	of	the	matrix	by	increasing	values	of the	column	AirFlow.		
+Order	the	rows	of	the	matrix	by	increasing	values	of the	column	AirFlow.		
 
 * Performance comparisons
 ```{r}
