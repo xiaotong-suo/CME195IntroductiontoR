@@ -1,4 +1,8 @@
 # Lecture 5
+## What we covered so far
+1. variables/functions
+2. data structures
+
 ## Agenda
 1. Useful Commands
 2. Control Structures

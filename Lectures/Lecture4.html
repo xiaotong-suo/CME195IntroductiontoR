@@ -127,6 +127,18 @@ str(spliteddiamonds)</code></pre></li>
 <p>’FUN’: the function to be applied. In the case of functions like +, %*%, etc., the function namemust be backquoted or quoted. ’…’: additional optional arguments to FUN. <code>Some Exercises</code>{r} x &lt;- rnorm(100, -5, 1) x &lt;- c(NA,rnorm(100, -5, 1)) y &lt;- rnorm(100, 5, 1) X &lt;- cbind(x, y) apply(X, MARGIN=2, FUN=mean) apply(X, 2,mean,na.rm=T) apply(X, MARGIN=2, FUN=var) apply(X,2,var,na.rm=T) for( i in 1:2) print(mean(X[,i])) ```</p>
 <ul>
 <li><p>rowSums, rowMeans,colSums, colMeans</p></li>
+<li>order and sort</li>
+<li>The func1on ‘order’ returns the ascending (default) or descending order of elements of a vector. For example, order(0.5,5,-3.1) will return 3, 1, 2. Its sister func1on is sort. We always have x[order(x)]=sort(x).<br />
+</li>
+<li>The matrix stack.x is a readily available matrix in<br />
+</li>
+</ul>
+<ol start="18" style="list-style-type: upper-alpha">
+<li>It has three names columns: Air.Flow, Water.Temp, Acid.Conc.. The meaning of these numbers are not very important here.<br />
+</li>
+</ol>
+<ul>
+<li><p>Order the rows of the matrix by increasing values of the column AirFlow.</p></li>
 <li><p>Performance comparisons</p>
 <pre class="{r}"><code>N=10
 P=5
