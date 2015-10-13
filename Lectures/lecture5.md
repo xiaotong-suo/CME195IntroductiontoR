@@ -43,12 +43,16 @@ for(var in seq){
 ```
 3. Exercise: Given a matrix A, write a for loop that calculates the sum of each row of A. 
 
-This is an example of a ”trivial” for loop. 
-There is never the need to do such loops in R because it provides a simple class of functions to do just that: the ”apply” functions. 
+This is an example of a `trivial` for loop. 
+There is never the need to do such loops in R because it provides a simple class of functions to do just that: the 'apply' functions. 
 􏰀Often times the apply functions even lead to faster code (but not always). 
 
 ### while loops
 while loop is used when it is not known ahead of time how many loop iterations are needed.
+
+Example: suppose we wish to calculate the partial sums of the harmonic series until the partial sum exceeds 5. It is a fact that the harmonic series diverges, so eventually the partial sum must exceed any given constant
+
+The harmonic series is $\sum_{i=1}^{\infty}\frac{1}{i}$
 
 ### if loops
 1. An ‘if’ block can be used to make on-the-fly decisions about what statements of a program get executed. For example, 
