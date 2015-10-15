@@ -1,0 +1,98 @@
+# Lecture 6
+
+## Graphics
+- R has a powerful graphical capability.
+- To plot a graph you need a graphical device.
+- If you launch your plot right away, R will create automatically one graphical device for you.
+  - On OS Mac use the function
+    ```
+    quartz()
+    ```
+    to create a graphical device.
+  - On Windows systems, use
+    ```
+    windows()
+    ```
+- A graphical device can also be a file. Your graphs are then sent to that file. Use the functions
+  - pdf()
+  - postscript()
+
+- Example: the airquality data set.
+  ```{r}
+  dt=airquality
+  names(dt)
+  boxplot(dt$Temp)
+  plot(dt$Temp,type='l')
+  plot(dt$Temp,dt$Wind,type='p')
+  plot(dt$Temp,dt$Wind,type='p',
+  xlab='Temperature', ylab='Wind', main='Wind vs Temp. in NY city May-Sept. 73')
+  ```
+Continuing with the airquality dataset, suppose we want to do a boxplot of the data from each month.
+```{r}
+dt$Month=as.factor(dt$Month)
+boxplot(Temp ~ Month,data=dt, names=c('May','June','July','August','Sept.'))
+```
+
+- What if we want to have multiple graphics on the same graphical device? There are many ways to do this.
+One simple possibility is ’layout’.
+
+- Example: the airquality data set.
+```{r}
+m=matrix(c(1,2),ncol=2)
+layout(m)
+layout.show(2)
+boxplot(dt$Temp,main='Boxplot')
+plot(dt$Temp,type='l',main='Time series plot')
+```
+
+- Example: the airquality data set.
+``` {r}
+m=matrix(c(1,3,2,3),2,2)
+layout(m)
+layout.show(3)
+boxplot(dt$Temp,main='Boxplot Temp. in NY city')
+plot(dt$Temp,type='l',main='Temp. in NY city')
+plot(dt$Temp,dt$Wind,type='p',xlab='Temp', ylab='Wind',main='xyplot')
+```
+
+- What if we want to put multiple graphs on the same plot?
+issue
+```{r}
+par(new=T)
+```
+first.
+
+- Few plotting functions in R:
+  * plot(x): plot the values of vector x.
+  * plot(x,y): bivariate plot of y as function of x.
+  * boxplot(x): ”box-and-whiskers” plot.
+  * hist(x): produce a histogram of x.
+
+## ggplot2
+What is ggplot2?
+- Package in R called ‘ggplot2’
+- An implementation of the grammar of graphics
+Written by Hadley Wickham
+- It deals with spacing, text, and titles automatically, but also allows you to change them
+- More intuitive to use
+
+### qplot()
+
+- Stands for quick plot
+- Looks very similar to plot function
+- Needs a data frame.
+- Plots are made up of aesthetics(size, shape, color) and     geoms(points, lines)
+- Geoms: geometric objects to represent observations
+- Factors are very important in ggplot
+- ggplot is the core function and can do things that qplot() can not do.
+
+- The diamond example: the data set is available under the package ggplot2.
+This dataset containing the prices and other attributes of almost 54,000 diamonds.
+
+```{r}
+library(ggplot2)
+qplot(carat, price, data = diamonds)
+qplot(log(carat), log(price), data = diamonds)
+dsmall <- diamonds[sample(nrow(diamonds), 300), ]
+qplot(log(carat),log(price), colour = color, data = dsmall)
+```
