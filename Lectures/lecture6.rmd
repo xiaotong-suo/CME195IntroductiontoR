@@ -2,13 +2,14 @@
 
 ## Graphics
 - R has a powerful graphical capability.
-- To plot a graph you need a graphical device.
+- To plot a graph you need a graphical device. It's like the "palette" that you use when you draw something. 
+
 - If you launch your plot right away, R will create automatically one graphical device for you.
   - On OS Mac use the function
     ```
     quartz()
     ```
-    to create a graphical device.
+    to create a graphical device.fa
   - On Windows systems, use
     ```
     windows()
@@ -17,16 +18,29 @@
   - pdf()
   - postscript()
 
+## The base: plot() functions in R
+You start with blank canvas, and build things from there. We will start with using just the 'plot' function first. Then we use annotation functions to modify our plots, such as adding text, 
+lines, points, axis, titles, etc.
+
+- Example:
+  ```{r}
+  x = 1:4
+  y = rnorm(4)
+  plot(x, y, axes = FALSE)
+  axis(side = 1, at = 1:4, labels = LETTERS[1:4])
+  ```
 - Example: the airquality data set.
   ```{r}
   dt=airquality
   names(dt)
   boxplot(dt$Temp)
   plot(dt$Temp,type='l')
+  abline(h = 70, col= 'red')
   plot(dt$Temp,dt$Wind,type='p')
   plot(dt$Temp,dt$Wind,type='p',
   xlab='Temperature', ylab='Wind', main='Wind vs Temp. in NY city May-Sept. 73')
   ```
+  
 Continuing with the airquality dataset, suppose we want to do a boxplot of the data from each month.
 ```{r}
 dt$Month=as.factor(dt$Month)
@@ -46,20 +60,20 @@ plot(dt$Temp,type='l',main='Time series plot')
 ```
 
 - Example: the airquality data set.
-``` {r}
-m=matrix(c(1,3,2,3),2,2)
-layout(m)
-layout.show(3)
-boxplot(dt$Temp,main='Boxplot Temp. in NY city')
-plot(dt$Temp,type='l',main='Temp. in NY city')
-plot(dt$Temp,dt$Wind,type='p',xlab='Temp', ylab='Wind',main='xyplot')
-```
+  ``` {r}
+  m=matrix(c(1,3,2,3),2,2)
+  layout(m)
+  layout.show(3)
+  boxplot(dt$Temp,main='Boxplot Temp. in NY city')
+  plot(dt$Temp,type='l',main='Temp. in NY city')
+  plot(dt$Temp,dt$Wind,type='p',xlab='Temp', ylab='Wind',main='xyplot')
+  ```
 
 - What if we want to put multiple graphs on the same plot?
 issue
-```{r}
-par(new=T)
-```
+  ```{r}
+  par(new=T)
+  ```
 first.
 
 - Few plotting functions in R:
@@ -72,23 +86,27 @@ first.
 What is ggplot2?
 - Package in R called ‘ggplot2’
 - An implementation of the grammar of graphics
-Written by Hadley Wickham
-- It deals with spacing, text, and titles automatically, but also allows you to change them
-- More intuitive to use
+- Written by Hadley Wickham
+
+What is grammar of graphics?
+- Just like we have verbs, nouns, and adjectives, it is a way of describing how to plot 
+what you want R to plot.
+
+From ggplot2 book:
+"In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system." 
+
 
 ### qplot()
-
 - Stands for quick plot
 - Looks very similar to plot function
-- Needs a data frame.
-- Plots are made up of aesthetics(size, shape, color) and     geoms(points, lines)
+- Needs a data frame. 
+- Plots are made up of aesthetics(size, shape, color) and  geoms(points, lines)
 - Geoms: geometric objects to represent observations
 - Factors are very important in ggplot
 - ggplot is the core function and can do things that qplot() can not do.
 
 - The diamond example: the data set is available under the package ggplot2.
 This dataset containing the prices and other attributes of almost 54,000 diamonds.
-
 ```{r}
 library(ggplot2)
 qplot(carat, price, data = diamonds)
