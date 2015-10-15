@@ -19,8 +19,7 @@
   - postscript()
 
 ## The base: plot() functions in R
-You start with blank canvas, and build things from there. We will start with using just the 'plot' function first. Then we use annotation functions to modify our plots, such as adding text, 
-lines, points, axis, titles, etc.
+You start with blank canvas, and build things from there. We will start with using just the 'plot' function first. Then we use annotation functions to modify our plots, such as adding text, lines, points, axis, titles, etc.
 
 - Example:
   ```{r}
@@ -29,6 +28,7 @@ lines, points, axis, titles, etc.
   plot(x, y, axes = FALSE)
   axis(side = 1, at = 1:4, labels = LETTERS[1:4])
   ```
+  
 - Example: the airquality data set.
   ```{r}
   dt=airquality
