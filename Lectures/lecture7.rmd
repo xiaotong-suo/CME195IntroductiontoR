@@ -1,0 +1,171 @@
+---
+output: html_document
+---
+# Lecture 7
+1. Recap:
+  * The base: plot() functions
+2. Today's agenda
+  * ggplot2()
+
+Three main modes for plotting in R:
+
+  - plot functions
+```{r}
+x <- 0:64/64
+y <- sin(3*pi*x)
+plot(x, y, type = "l", col = "blue",
+    main = "points with bg & legend(*, pt.bg)")
+points(x, y, pch = 21, bg = "white")
+legend(.4,1, "sin(c x)", pch = 21, pt.bg = "white", lty = 1, col = "blue")
+```
+  - lattice functions
+
+  - ggplot functions
+
+# ggplot2 package
+What is ggplot2?
+
+  1. Its a package in R called ‘ggplot2’
+
+  2. An implementation of the grammar of graphics: a description of how a graphics can be broken down into abstract concepts.
+  
+  From ggplot2 book:
+  "In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system."
+
+  3. Written by Hadley Wickham
+
+### qplot()
+  - Stands for quick plot
+  - Looks very similar to plot() function
+  - Needs a data frame.
+  - Plots are made up of aesthetics(size, shape, color) and geoms(points, lines). 
+  - Geoms: geometric objects to represent observations
+  - Factors are very important in ggplot: make sure they are labeled in a meaningful way. 
+  - ggplot is the core function and can do things that qplot() can not do.
+
+#### An example
+The diamond example: the data set is available under the package ggplot2.
+
+This dataset containing the prices and other attributes of almost 54,000 diamonds.
+```{r}
+library(ggplot2)
+qplot(carat, price, data = diamonds)
+# compared to
+plot(diamonds$carat,diamonds$price, type = 'p')
+qplot(log(carat), log(price), data = diamonds)
+dsmall <- diamonds[sample(nrow(diamonds), 300), ]
+qplot(log(carat),log(price), colour = color, data = dsmall)
+```
+
+```{r}
+#diamonds example
+qplot(carat, price, data = diamonds)
+qplot(log(carat), log(price), data = diamonds)
+qplot(carat, x * y * z, data = diamonds)
+
+set.seed(1410)
+dsmall <- diamonds[sample(nrow(diamonds), 100), ]
+qplot(carat, price, data = dsmall)
+qplot(log(carat), log(price), data = dsmall)
+
+#modifying aesthetics: separate groups by the color of the diamonds. 
+qplot(log(carat),log(price), colour = color, data = dsmall)
+# separate groups by the shape
+qplot(log(carat),log(price), shape = cut,data = dsmall)
+
+
+#geom arguments adding some statistics "smoothing the data"
+qplot(carat, price, geom = c("point", "smooth"), data = dsmall)
+
+#histogram
+qplot(carat, data = diamonds, geom = "histogram")
+qplot(carat, data = diamonds, geom = "density")
+
+#histogram
+qplot(carat, data = diamonds, geom = "density", colour = color)
+qplot(carat, data = diamonds, geom = "histogram", fill = color)
+
+#facets
+qplot(carat, data = diamonds, geom = "density",facets = color~.)
+qplot(carat, data = diamonds, geom = "histogram", colour = color, facets = color~.)
+qplot(carat,price, data = diamonds, facets = color~.)
+qplot(carat,price, data = diamonds, facets = .~cut)
+qplot(log(carat), log(price), data = dsmall, facets = cut~., 
+      geom = c("point", "smooth"), method = 'lm', colour = cut)
+```
+
+### ggplot()
+When we used qplot(), it did a lot of things for us: it created a plot object, added layers, and displayed the result, using many default values along the way.
+
+#### Some basics about ggplot() function:
+  1. Needs a data frame
+  2. aesthetic mappings: size, color
+  3. geoms: geometric objects
+  4. facets: multiple panels
+  5. stats: statistical transformations
+
+#### Plots are built up in layers:
+  1. Plot the data
+  2. Overlay a summary: a statistics summary, regression line
+  3. Annotations
+  
+We just learned that:
+```{r}
+qplot(log(carat), log(price), data = dsmall, facets = cut~., 
+      geom = c("point", "smooth"), method = 'lm', colour = cut)
+```
+Now, we learn how to build with ggplot() function:
+Building ggplot(), adding things "piece by piece": 
+```{r}
+g = ggplot(dsmall, aes(log(carat), log(price))) 
+g = ggplot(dsmall, aes(log(carat), log(price))) +  geom_point()
+```
+
+Adding a smoother:
+```{r}
+g + geom_point() + geom_smooth()
+```
+Adding another smoother:
+```{r}
+g + geom_point() + geom_smooth(method = 'lm')
+```
+Adding Facets:
+```{r}
+g + geom_point() +facet_grid(cut~.)+geom_smooth(method = 'lm')
+```
+Adding Colors:
+```{r}
+g + geom_point(aes(colour = cut)) +facet_grid(cut~.) + geom_smooth(method = 'lm')
+```
+
+```{r}
+g1 <- ggplot(dsmall, aes(log(carat), log(price), colour = cut))
+g1 + geom_point() +facet_grid(cut~.) + geom_smooth(method ='lm')
+```
+### Remarks:
+
+  1. Orders do not matter
+  
+  2. Make sure that your data has meaningful factor levels.
+
+### Some other changes could be done to your plot:
+  1. Modifying Aesthetics:
+  ```
+  g + geom_point(aes(colour = cut), size = 4, alpha = 1/4)
+  ```
+  2. Annotation:
+  You can change the labels of x, y axis by adding xlab(), ylab(), ggtitle()
+  1. The background of your ggplot can be changed using
+      ```
+      theme_gray() default setting
+      theme_bw() ---change to black
+      ```
+      ```{r}
+      g  + geom_point(aes(colour = cut)) + facet_grid(cut~.) + 
+      geom_smooth(method = 'lm', aes(colour = cut)) + theme_gray()
+      ```
+  2. Change the font by  `{r} base_family = "Times"`
+  3. You can also delete your legend by issuing
+      ```
+      theme(lengend.position = "none"")
+      ```
