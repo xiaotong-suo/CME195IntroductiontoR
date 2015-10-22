@@ -129,7 +129,7 @@ Adding another smoother:
 ```{r}
 g + geom_point() + geom_smooth(method = 'lm')
 ```
-Adding Facets:
+Adding Facets: the variable determines how the plots are separated:
 ```{r}
 g + geom_point() +facet_grid(cut~.)+geom_smooth(method = 'lm')
 ```
@@ -155,17 +155,20 @@ g1 + geom_point() +facet_grid(cut~.) + geom_smooth(method ='lm')
   ```
   2. Annotation:
   You can change the labels of x, y axis by adding xlab(), ylab(), ggtitle()
-  1. The background of your ggplot can be changed using
-      ```
-      theme_gray() default setting
-      theme_bw() ---change to black
-      ```
-      ```{r}
-      g  + geom_point(aes(colour = cut)) + facet_grid(cut~.) + 
-      geom_smooth(method = 'lm', aes(colour = cut)) + theme_gray()
-      ```
-  2. Change the font by  `{r} base_family = "Times"`
-  3. You can also delete your legend by issuing
-      ```
-      theme(lengend.position = "none"")
-      ```
+    *. The background of your ggplot can be changed using
+        ```
+        theme_gray() default setting
+        theme_bw() ---change to black
+        ```
+        
+        ```{r}
+        g = ggplot(dsmall, aes(log(carat), log(price)))
+        g  + geom_point(aes(colour = cut)) + facet_grid(cut~.) + 
+        geom_smooth(method = 'lm', aes(colour = cut)) + theme_bw()
+        ```
+        
+    *. Change the font by  `{r} base_family = "Times"`
+    *. You can also delete your legend by issuing
+        ```
+        theme(lengend.position = "none"")
+        ```

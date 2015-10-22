@@ -1,2 +1,153 @@
 # Lecture 8
-1. Recap: 
+## Recap: 
+ggplot2 package: qplot and ggplot. It is important to understand the very basic level in order to build more complicated plots. 
+
+## Today's agenda
+
+  1. Control structures 
+  2. using 'lm' package
+  
+
+## Control structures
+
+  1. An important component of a programming language is the 'control structures' in         order  to implement repetitive task.
+  
+  􏱻2. R programming language has control structures similar to C
+  
+  3. Loops are used to carry out a sequence of related operations without having to write the code for each step explicitly.
+
+### for Loops
+  1. For instance, suppose we want to calculate:
+    $\sum_{i = 1}^{10} i$
+    ```{r}
+    x=0
+    for(i in 1:10){
+      x=x+i
+    }
+    ```
+    - In the above program, x is an accumulator variable, meaning that its value is repeatedly updated while the program runs. 
+    - Always remember to initiazlize accumulator varialbes (to zero in this example). 
+    - To clarify, we can add a print statement inside the loop body.
+    
+    ```{r}
+    x=0
+    for (i in 1:10){
+      x=x+i
+    	print(c(i,x))
+    }
+    ```
+    
+  2. The general structure of 'for' loops:
+    ```
+    for(var in seq) expr
+    ```
+    Or
+    ```
+    for(var in seq){
+      expr
+    }
+    ```
+    
+3. Exercise: Given a matrix A, write a for loop that calculates the sum of each row of A. 
+This is an example of a `trivial` for loop. 
+There is never the need to do such loops in R because it provides a simple class of functions to do just that: the 'apply' functions. 
+􏰀Often times the apply functions even lead to faster code (but not always). 
+
+### while loops
+while loop is used when it is not known ahead of time how many loop iterations are needed.
+
+Example: suppose we wish to calculate the partial sums of the harmonic series until the partial sum exceeds 5. It is a fact that the harmonic series diverges, so eventually the partial sum must exceed any given constant
+
+The harmonic series is $\sum_{i=1}^{\infty}\frac{1}{i}$
+
+### if loops
+1. An ‘if’ block can be used to make on-the-fly decisions about what statements of a program get executed. For example, 
+```{r}
+y=7	
+if (y < 10) { 
+	x=2 
+}else{
+  x=1 
+} 
+```
+
+2. General syntax: 
+```
+if (cond) expr1 else expr2 
+    Or 
+  if (cond) { 
+		expr1 
+	} else { 
+		expr2 
+	}   
+```
+
+3. Another example: the following program places the sum of the odd integers up to 100 in A and the sum of the even integers up to 100 in B. 
+
+### next and break
+A break statement is used to exit a loop when a certain condition is met. A next statement results in the current iteration being aborted, but the loop continues with the next iteration. 
+
+```{r}
+x=0
+for (k in seq(100)){  
+  if (k %% 2 == 0){ 
+    next 
+  } ## Skip even numbers, but keep looping.
+	if (x >= 50) { 
+    break 
+  }	## Quit looping when the sum exceeds 50. 
+  x=x+k
+} 
+```
+
+## Exercises: (optional)
+
+1. Using only multiplication, summation, matrix or vector manipulations,
+the power function, and the function choose, write some R code to check
+that $$\sum_{i = 0}^n(-1)^i{n\choose i} = 0$$ The R function `choose' can be useful.
+
+2. Write a normal density function $f$ taking three arguments $x, \mu, \sigma$, and returns the density of $x$. 
+\begin{align*}
+f(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp(-\frac{(x-\mu)^2}{2\sigma^2})
+\end{align*}
+
+3. The dataset uswages is drawn as a sample from the Current Population Survey in 1998. 
+
+  - Make a numerical summary of the data.
+  - How to get the first 6 observations of this dataframe?
+  - How to plot educ against wage using qplot function?
+  - How to get all the observations, the column 'educ' of which is less than 12? 
+   
+## Using 'lm' model 
+The diamond example: we saw previously that there is some linear relation between carat and price, ie., it seems that the heavier the diamond is, the more expensive it is. Now, can we confirm this relation? We can issue the following command in R:
+```{r}
+library(ggplot2)
+lm(price~carat, data = diamonds) 
+```
+If you don tthink there is an intercept:
+```{r}
+linearModel = lm(log(price)~log(carat) - 1,data = diamonds)
+summary(linearModel)
+```
+
+```{r}
+linearModel2 = lm(price~carat + cut + clarity + depth, data = diamonds)
+summary(linearModel2)
+```    
+
+```{r}
+linearModel3= lm(price~ poly(carat,4) + cut + clarity + depth, 
+                  data = diamonds)    
+summary(linearModel3)
+```
+
+```{r}
+linearModel4= lm(price~ I(carat^2) + cut + clarity + depth, 
+                  data = diamonds)    
+summary(linearModel3)
+```
+
+```{r}
+linearModel5 = lm(price~., data = diamonds)
+summary(linearModel4)
+```
